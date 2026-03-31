@@ -1,0 +1,31 @@
+{
+  "meta": { "lastTouchedVersion": "2026.3.8" },
+  "agents": {
+    "defaults": {
+      "model": { "primary": "anthropic/claude-sonnet-4-6" },
+      "workspace": "/app/workspace",
+      "compaction": { "mode": "safeguard" },
+      "maxConcurrent": 4,
+      "subagents": { "maxConcurrent": 8 }
+    }
+  },
+  "messages": { "ackReactionScope": "group-mentions" },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "botToken": { "$ref": "env:TELEGRAM_BOT_TOKEN" },
+      "groupPolicy": "allowlist",
+      "streaming": "partial"
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "lan",
+    "auth": {
+      "mode": "token",
+      "token": { "$ref": "env:OPENCLAW_GATEWAY_TOKEN" }
+    }
+  }
+}
