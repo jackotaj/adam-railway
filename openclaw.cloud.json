@@ -1,0 +1,31 @@
+{
+  "meta": {},
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "anthropic/claude-sonnet-4-6"
+      },
+      "workspace": "/app/workspace",
+      "compaction": { "mode": "safeguard" },
+      "maxConcurrent": 4
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "bind": "lan",
+    "auth": {
+      "mode": "token",
+      "token": "$OPENCLAW_GATEWAY_TOKEN"
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "botToken": "$TELEGRAM_BOT_TOKEN",
+      "dmPolicy": "pairing",
+      "groupPolicy": "allowlist",
+      "streaming": "partial"
+    }
+  },
+  "credentials": {}
+}
