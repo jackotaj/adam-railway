@@ -38,14 +38,14 @@ CREDEOF
 # Clone or pull workspace
 if [ -d "/root/.openclaw/workspace/.git" ]; then
   echo "Pulling latest workspace..."
-  cd /root/.openclaw/workspace && git pull origin main
+  cd /root/.openclaw/workspace && git pull origin main || echo "⚠️ Workspace pull failed, continuing with existing copy..."
 else
   echo "Cloning workspace..."
-  git clone "https://${GITHUB_TOKEN}@github.com/jackotaj/clawd-workspace.git" /root/.openclaw/workspace
+  git clone "https://${GITHUB_TOKEN}@github.com/jackotaj/clawd-workspace.git" /root/.openclaw/workspace || echo "⚠️ Workspace clone failed, continuing without workspace..."
 fi
 
 # Update agents.defaults.workspace in config to point to cloned workspace
 sed -i 's|/app/workspace|/root/.openclaw/workspace|g' /root/.openclaw/openclaw.json
 
 echo "✅ Starting OpenClaw gateway..."
-exec openclaw gateway start --bind lan
+exec openclaw gateway --allow-unconfigured
