@@ -20,7 +20,7 @@
   },
   "channels": {
     "telegram": {
-      "enabled": true,
+      "enabled": false,
       "botToken": "$TELEGRAM_BOT_TOKEN",
       "dmPolicy": "pairing",
       "groupPolicy": "allowlist",
