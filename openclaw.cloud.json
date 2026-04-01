@@ -26,6 +26,5 @@
       "groupPolicy": "allowlist",
       "streaming": "partial"
     }
-  },
-  "credentials": {}
+  }
 }
